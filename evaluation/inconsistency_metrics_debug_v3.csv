@@ -1,0 +1,4 @@
+Expected Finding ID,Expected Type,Expected Summary,Detected Finding ID,Detected Type,Matched?,Reason if not matched
+GT-01,INTERFACE_MISMATCH,Interface Mismatch between SWC_SpeedSensor_V2 and SWC_TorqueCalc,FIND-3d418377,INTERFACE_MISMATCH,YES,None
+GT-02,REMOVED_COMPONENT,Software Component 'SWC_SpeedSensor' removed in revision,FIND-256d9e2e,REMOVED_COMPONENT,YES,None
+GT-03,UNMAPPED_INTERFACE,Unmapped Required Interface 'RTE_I_SafetyTorque',FIND-00d0e2b7,UNMAPPED_INTERFACE,YES,None

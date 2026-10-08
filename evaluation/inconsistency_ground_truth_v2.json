@@ -1,0 +1,19 @@
+{
+  "inconsistencies": [
+    {
+      "type": "INTERFACE_MISMATCH",
+      "summary": "Interface Mismatch between SWC_SpeedSensor_V2 and SWC_TorqueCalc",
+      "expected_rule": "INTERFACE_MISMATCH"
+    },
+    {
+      "type": "REMOVED_COMPONENT",
+      "summary": "Software Component 'SWC_SpeedSensor' removed in revision",
+      "expected_rule": "REMOVED_COMPONENT"
+    },
+    {
+      "type": "UNMAPPED_INTERFACE",
+      "summary": "Unmapped Required Interface 'RTE_I_SafetyTorque'",
+      "expected_rule": "UNMAPPED_INTERFACE"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "entities": [
+    {"type": "SoftwareComponent", "name": "SpeedSensorComponent"},
+    {"type": "SoftwareComponent", "name": "TorqueCalculator"},
+    {"type": "SoftwareComponent", "name": "ThrottleActuator"},
+    {"type": "SoftwareComponent", "name": "EngineControlUnit"},
+    {"type": "Interface", "name": "RTE_I_EngineSpeed"},
+    {"type": "Interface", "name": "RTE_I_ThrottlePosition"},
+    {"type": "Port", "name": "PPort_EngineSpeed"},
+    {"type": "Port", "name": "PPort_ThrottleCmd"},
+    {"type": "Signal", "name": "EngineSpeed_RPM"},
+    {"type": "Signal", "name": "ThrottleAngle_Deg"}
+  ]
+}

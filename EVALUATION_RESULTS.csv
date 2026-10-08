@@ -1,0 +1,77 @@
+id,question,category,is_answerable,recall_at_k,grounded,citation_indicator_present,outcome,latency_sec,answer_snippet
+Q-01,What software components are defined in the Powertrain ECU HLD?,component_lookup,True,1.0,True,True,INCORRECT_ANSWER,0.019,"Based on the indexed AUTOSAR HLD evidence [Source 1]:
+
+Key Findings regarding 'What software components are defined in the Powertrain ECU HLD?
+
+Formul..."
+Q-02,Which component provides the RTE_I_EngineSpeed interface?,interface_relationship,True,1.0,True,True,CORRECT_ANSWER,0.003,"Based on the indexed AUTOSAR HLD evidence [Source 1]:
+
+Key Findings regarding 'Which component provides the RTE_I_EngineSpeed interface?
+
+Formulate a ..."
+Q-03,What signal is carried by port PPort_EngineSpeed?,signal_lookup,True,1.0,True,True,CORRECT_ANSWER,0.014,"Based on the indexed AUTOSAR HLD evidence [Source 1]:
+
+Key Findings regarding 'What signal is carried by port PPort_EngineSpeed?
+
+Formulate a structur..."
+Q-04,What is the dependency between SWC_TorqueCalc and SWC_SpeedSensor?,dependency,True,1.0,True,True,CORRECT_ANSWER,0.008,"Based on the indexed AUTOSAR HLD evidence [Source 1]:
+
+Key Findings regarding 'What is the dependency between SWC_TorqueCalc and SWC_SpeedSensor?
+
+For..."
+Q-05,Summarize the functional flow FF_Torque_Control.,functional_flow,True,1.0,True,True,CORRECT_ANSWER,0.008,"Based on the indexed AUTOSAR HLD evidence [Source 1]:
+
+Key Findings regarding 'Summarize the functional flow FF_Torque_Control.
+
+Formulate a structure..."
+Q-06,What interface does SWC_TorqueCalc provide to SWC_ThrottleActuator?,interface_relationship,True,1.0,True,True,CORRECT_ANSWER,0.008,"Based on the indexed AUTOSAR HLD evidence [Source 1]:
+
+Key Findings regarding 'What interface does SWC_TorqueCalc provide to SWC_ThrottleActuator?
+
+Fo..."
+Q-07,What range and resolution is specified for signal EngineSpeed_RPM?,signal_lookup,True,1.0,True,True,CORRECT_ANSWER,0.008,"Based on the indexed AUTOSAR HLD evidence [Source 1]:
+
+Key Findings regarding 'What range and resolution is specified for signal EngineSpeed_RPM?
+
+For..."
+Q-08,Explain the multi-step functional execution sequence from speed sensor sampling to throttle motor actuation.,multi_page_reasoning,True,1.0,True,True,CORRECT_ANSWER,0.006,"Based on the indexed AUTOSAR HLD evidence [Source 1]:
+
+Key Findings regarding 'Explain the multi-step functional execution sequence from speed sensor ..."
+Q-09,What port type is PPort_ThrottleCmd?,component_relationship,True,1.0,True,True,CORRECT_ANSWER,0.01,"Based on the indexed AUTOSAR HLD evidence [Source 1]:
+
+Key Findings regarding 'What port type is PPort_ThrottleCmd?
+
+Formulate a structured answer bas..."
+Q-10,Is there any software component handling battery high-voltage charging in this ECU HLD?,unanswerable_abstention,False,1.0,True,True,CORRECT_ABSTENTION,0.006,I could not find enough evidence in the indexed HLD documents to answer this confidently....
+Q-11,What is the cyber security encryption key used for UDS diagnostic authentication?,unanswerable_abstention,False,1.0,True,True,CORRECT_ABSTENTION,0.008,I could not find enough evidence in the indexed HLD documents to answer this confidently....
+Q-12,What component manages CAN bus baud rate configuration?,unanswerable_abstention,False,1.0,True,True,CORRECT_ABSTENTION,0.003,I could not find enough evidence in the indexed HLD documents to answer this confidently....
+Q-13,How does the system calculate torque when engine speed sensor pulse signal is completely lost?,unanswerable_abstention,False,1.0,True,True,CORRECT_ABSTENTION,0.011,I could not find enough evidence in the indexed HLD documents to answer this confidently....
+Q-14,What new component was added in HLD Version 1.1?,revision_comparison,True,1.0,True,True,CORRECT_ANSWER,0.004,"Based on the indexed AUTOSAR HLD evidence [Source 1]:
+
+Key Findings regarding 'What new component was added in HLD Version 1.1?
+
+Formulate a structure..."
+Q-15,What interface conflict exists between SWC_SpeedSensor_V2 and SWC_TorqueCalc in v1.1?,revision_comparison,True,1.0,True,True,CORRECT_ANSWER,0.006,"Based on the indexed AUTOSAR HLD evidence [Source 1]:
+
+Key Findings regarding 'What interface conflict exists between SWC_SpeedSensor_V2 and SWC_Torqu..."
+Q-16,What RPort is owned by SWC_ThrottleActuator?,component_relationship,True,1.0,True,True,CORRECT_ANSWER,0.014,"Based on the indexed AUTOSAR HLD evidence [Source 1]:
+
+Key Findings regarding 'What RPort is owned by SWC_ThrottleActuator?
+
+Formulate a structured an..."
+Q-17,Which safety standard is referenced by SWC_SafetyMonitor?,fact_retrieval,True,1.0,True,True,CORRECT_ANSWER,0.009,"Based on the indexed AUTOSAR HLD evidence [Source 1]:
+
+Key Findings regarding 'Which safety standard is referenced by SWC_SafetyMonitor?
+
+Formulate a ..."
+Q-18,What is the primary role of SWC_ECUMain?,fact_retrieval,True,1.0,True,True,CORRECT_ANSWER,0.008,"Based on the indexed AUTOSAR HLD evidence [Source 1]:
+
+Key Findings regarding 'What is the primary role of SWC_ECUMain?
+
+Formulate a structured answer..."
+Q-19,What is the signal carried by RPort_SafetyCheck?,signal_lookup,True,1.0,True,True,CORRECT_ANSWER,0.011,"Based on the indexed AUTOSAR HLD evidence [Source 1]:
+
+Key Findings regarding 'What is the signal carried by RPort_SafetyCheck?
+
+Formulate a structure..."
+Q-20,What is the wireless Bluetooth MAC address of the ECU?,unanswerable_abstention,False,1.0,True,True,CORRECT_ABSTENTION,0.009,I could not find enough evidence in the indexed HLD documents to answer this confidently....

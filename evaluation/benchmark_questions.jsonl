@@ -1,0 +1,6 @@
+{"id": "Q-01", "question": "What software components are defined in the Powertrain ECU HLD?", "category": "component_lookup", "expected_pages": [1], "expected_keywords": ["SpeedSensorComponent", "TorqueCalculator", "ThrottleActuator", "EngineControlUnit"]}
+{"id": "Q-02", "question": "Which component provides the RTE_I_EngineSpeed interface?", "category": "interface_lookup", "expected_pages": [2], "expected_keywords": ["SWC_SpeedSensor", "RTE_I_EngineSpeed"]}
+{"id": "Q-03", "question": "What signal is carried by port PPort_EngineSpeed?", "category": "port_signal_lookup", "expected_pages": [2], "expected_keywords": ["EngineSpeed_RPM", "PPort_EngineSpeed"]}
+{"id": "Q-04", "question": "What is the dependency between SWC_TorqueCalc and SWC_SpeedSensor?", "category": "dependency", "expected_pages": [3], "expected_keywords": ["depends_on", "SWC_TorqueCalc", "SWC_SpeedSensor"]}
+{"id": "Q-05", "question": "Summarize the functional flow FF_Torque_Control.", "category": "functional_flow", "expected_pages": [3], "expected_keywords": ["FF_Torque_Control", "ThrottleAngle_Deg", "EngineSpeed_RPM"]}
+{"id": "Q-06", "question": "Is there any software component handling battery charging in this ECU?", "category": "abstention", "expected_pages": [], "expected_keywords": ["could not find enough evidence", "insufficient evidence"]}

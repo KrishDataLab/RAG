@@ -1,0 +1,31 @@
+Analyze the AUTOSAR HLD text and map relationships between the extracted entities.
+
+Allowed Relationship Types:
+- uses
+- provides
+- requires
+- owns
+- carries
+- depends_on
+- participates_in
+
+TEXT CONTENT:
+Page {page_number}, Section: {section}
+{text}
+
+EXTRACTED ENTITIES:
+{entities_json}
+
+Return JSON with format:
+{{
+  "relationships": [
+    {{
+      "source_name": "Entity Canonical Name",
+      "source_type": "SoftwareComponent",
+      "target_name": "Target Canonical Name",
+      "target_type": "Interface",
+      "relationship_type": "provides | requires | uses | owns | carries | depends_on | participates_in",
+      "confidence": 0.90
+    }}
+  ]
+}}

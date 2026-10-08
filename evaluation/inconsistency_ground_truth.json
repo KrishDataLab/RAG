@@ -1,0 +1,9 @@
+{
+  "inconsistencies": [
+    {
+      "type": "INTERFACE_MISMATCH",
+      "summary": "Interface Mismatch between SWC_SpeedSensor_V2 and SWC_TorqueCalc",
+      "expected_rule": "INTERFACE_MISMATCH"
+    }
+  ]
+}

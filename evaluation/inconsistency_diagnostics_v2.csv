@@ -1,0 +1,4 @@
+Expected Finding,Finding Type,Detected?,Evidence,Why Missed if any
+Interface Mismatch between SWC_SpeedSensor_V2 and SWC_TorqueCalc,INTERFACE_MISMATCH,YES,Rule INTERFACE_MISMATCH checked in DB,None
+Software Component 'SWC_SpeedSensor' removed in revision,REMOVED_COMPONENT,YES,Rule REMOVED_COMPONENT checked in DB,None
+Unmapped Required Interface 'RTE_I_SafetyTorque',UNMAPPED_INTERFACE,YES,Rule UNMAPPED_INTERFACE checked in DB,None

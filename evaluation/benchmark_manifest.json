@@ -1,0 +1,30 @@
+{
+  "benchmark_version": "v2.0",
+  "created_at": "2026-10-05",
+  "description": "Hardened AUTOSAR HLD Capstone Evaluation Benchmark Set",
+  "composition": {
+    "total_questions": 20,
+    "answerable_questions": 15,
+    "unanswerable_questions": 5,
+    "categories": {
+      "fact_retrieval": 3,
+      "component_lookup": 1,
+      "component_relationship": 2,
+      "interface_relationship": 2,
+      "signal_lookup": 3,
+      "dependency": 1,
+      "functional_flow": 1,
+      "multi_page_reasoning": 1,
+      "revision_comparison": 2,
+      "unanswerable_abstention": 5
+    },
+    "entity_ground_truth_classes": 6,
+    "inconsistency_test_cases": 3
+  },
+  "evaluation_config": {
+    "embedding_model": "all-MiniLM-L6-v2",
+    "retrieval_top_k": 8,
+    "min_similarity_threshold": 0.35,
+    "evaluation_modes": ["Mode A: Local Grounded Fallback", "Mode B: External LLM API (Gemini/OpenAI)"]
+  }
+}

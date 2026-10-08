@@ -1,0 +1,39 @@
+{
+  "entities_by_class": {
+    "SoftwareComponent": [
+      "SpeedSensorComponent",
+      "TorqueCalculator",
+      "ThrottleActuator",
+      "EngineControlUnit",
+      "SWC_SpeedSensor_V2",
+      "SWC_SafetyMonitor"
+    ],
+    "Interface": [
+      "RTE_I_EngineSpeed",
+      "RTE_I_ThrottlePosition",
+      "RTE_I_EngineSpeed_HighRes",
+      "RTE_I_ThrottlePosition_V2",
+      "RTE_I_SafetyTorque"
+    ],
+    "Port": [
+      "PPort_EngineSpeed",
+      "RPort_EngineSpeed",
+      "PPort_ThrottleCmd",
+      "RPort_ThrottleCmd",
+      "RPort_SafetyCheck"
+    ],
+    "Signal": [
+      "EngineSpeed_RPM",
+      "ThrottleAngle_Deg",
+      "SafetyOverride_Flag"
+    ],
+    "FunctionalFlow": [
+      "FF_Torque_Control",
+      "FF_Torque_Control_v2"
+    ],
+    "Dependency": [
+      "SWC_TorqueCalc_depends_on_SWC_SpeedSensor",
+      "SWC_ThrottleActuator_depends_on_SWC_TorqueCalc"
+    ]
+  }
+}

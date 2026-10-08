@@ -1,0 +1,7 @@
+CONTEXT EVIDENCE CHUNKS:
+{context}
+
+USER QUESTION:
+{question}
+
+Formulate a structured answer based only on the evidence above. Cite factual statements with the corresponding [Source X] marker and abstain when the evidence is insufficient.

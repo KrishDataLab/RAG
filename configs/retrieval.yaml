@@ -1,0 +1,3 @@
+retrieval:
+  top_k: 8
+  chunk_size: 250

@@ -1,0 +1,559 @@
+{
+  "evaluation_metadata": {
+    "benchmark_version": "v2",
+    "benchmark_size": 20,
+    "answerable_count": 15,
+    "unanswerable_count": 5,
+    "evaluation_date": "2026-10-08 10:49:10",
+    "model_provider": "fallback",
+    "retrieval_algorithm": "BM25",
+    "top_k": 8
+  },
+  "inference_modes": {
+    "mode_a_local_fallback": {
+      "status": "COMPLETED",
+      "active": true,
+      "description": "Local deterministic response fallback"
+    },
+    "mode_b_configured_llm": {
+      "status": "NOT RUN (Credentials missing)",
+      "active": false,
+      "description": "Configured LLM (auto)"
+    }
+  },
+  "summary": {
+    "total_questions_tested": 20,
+    "answerable_questions_tested": 15,
+    "unanswerable_questions_tested": 5,
+    "answer_accuracy": 93.33,
+    "correct_answerable_count": 14,
+    "mean_recall_at_k": 1.0,
+    "grounded_answer_rate": 100.0,
+    "citation_indicator_rate": 100.0,
+    "abstention_accuracy": 100.0,
+    "unsupported_answer_rate": 0.0,
+    "hallucination_rate": 0.0,
+    "entity_precision": 0.8261,
+    "entity_recall": 0.8261,
+    "entity_extraction_f1": 0.8261,
+    "inconsistency_precision": 1.0,
+    "inconsistency_recall": 1.0,
+    "inconsistency_f1": 1.0,
+    "average_latency_sec": 0.009,
+    "median_latency_sec": 0.008,
+    "p95_latency_sec": 0.014
+  },
+  "per_class_entity_metrics": {
+    "FunctionalFlow": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "predicted_count": 0,
+      "ground_truth_count": 2
+    },
+    "Signal": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "predicted_count": 25,
+      "ground_truth_count": 3
+    },
+    "Port": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "predicted_count": 45,
+      "ground_truth_count": 5
+    },
+    "Dependency": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "predicted_count": 0,
+      "ground_truth_count": 2
+    },
+    "Interface": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "predicted_count": 30,
+      "ground_truth_count": 5
+    },
+    "SoftwareComponent": {
+      "precision": 0.6,
+      "recall": 1.0,
+      "f1": 0.75,
+      "predicted_count": 70,
+      "ground_truth_count": 6
+    }
+  },
+  "latency_summary": {
+    "mean": 0.009,
+    "median": 0.008,
+    "p95": 0.014
+  },
+  "question_details": [
+    {
+      "id": "Q-01",
+      "question": "What software components are defined in the Powertrain ECU HLD?",
+      "category": "component_lookup",
+      "is_answerable": true,
+      "recall_at_k": 1.0,
+      "grounded": true,
+      "citation_indicator_present": true,
+      "outcome": "INCORRECT_ANSWER",
+      "latency_sec": 0.019,
+      "answer_snippet": "Based on the indexed AUTOSAR HLD evidence [Source 1]:\n\nKey Findings regarding 'What software components are defined in the Powertrain ECU HLD?\n\nFormul..."
+    },
+    {
+      "id": "Q-02",
+      "question": "Which component provides the RTE_I_EngineSpeed interface?",
+      "category": "interface_relationship",
+      "is_answerable": true,
+      "recall_at_k": 1.0,
+      "grounded": true,
+      "citation_indicator_present": true,
+      "outcome": "CORRECT_ANSWER",
+      "latency_sec": 0.003,
+      "answer_snippet": "Based on the indexed AUTOSAR HLD evidence [Source 1]:\n\nKey Findings regarding 'Which component provides the RTE_I_EngineSpeed interface?\n\nFormulate a ..."
+    },
+    {
+      "id": "Q-03",
+      "question": "What signal is carried by port PPort_EngineSpeed?",
+      "category": "signal_lookup",
+      "is_answerable": true,
+      "recall_at_k": 1.0,
+      "grounded": true,
+      "citation_indicator_present": true,
+      "outcome": "CORRECT_ANSWER",
+      "latency_sec": 0.014,
+      "answer_snippet": "Based on the indexed AUTOSAR HLD evidence [Source 1]:\n\nKey Findings regarding 'What signal is carried by port PPort_EngineSpeed?\n\nFormulate a structur..."
+    },
+    {
+      "id": "Q-04",
+      "question": "What is the dependency between SWC_TorqueCalc and SWC_SpeedSensor?",
+      "category": "dependency",
+      "is_answerable": true,
+      "recall_at_k": 1.0,
+      "grounded": true,
+      "citation_indicator_present": true,
+      "outcome": "CORRECT_ANSWER",
+      "latency_sec": 0.008,
+      "answer_snippet": "Based on the indexed AUTOSAR HLD evidence [Source 1]:\n\nKey Findings regarding 'What is the dependency between SWC_TorqueCalc and SWC_SpeedSensor?\n\nFor..."
+    },
+    {
+      "id": "Q-05",
+      "question": "Summarize the functional flow FF_Torque_Control.",
+      "category": "functional_flow",
+      "is_answerable": true,
+      "recall_at_k": 1.0,
+      "grounded": true,
+      "citation_indicator_present": true,
+      "outcome": "CORRECT_ANSWER",
+      "latency_sec": 0.008,
+      "answer_snippet": "Based on the indexed AUTOSAR HLD evidence [Source 1]:\n\nKey Findings regarding 'Summarize the functional flow FF_Torque_Control.\n\nFormulate a structure..."
+    },
+    {
+      "id": "Q-06",
+      "question": "What interface does SWC_TorqueCalc provide to SWC_ThrottleActuator?",
+      "category": "interface_relationship",
+      "is_answerable": true,
+      "recall_at_k": 1.0,
+      "grounded": true,
+      "citation_indicator_present": true,
+      "outcome": "CORRECT_ANSWER",
+      "latency_sec": 0.008,
+      "answer_snippet": "Based on the indexed AUTOSAR HLD evidence [Source 1]:\n\nKey Findings regarding 'What interface does SWC_TorqueCalc provide to SWC_ThrottleActuator?\n\nFo..."
+    },
+    {
+      "id": "Q-07",
+      "question": "What range and resolution is specified for signal EngineSpeed_RPM?",
+      "category": "signal_lookup",
+      "is_answerable": true,
+      "recall_at_k": 1.0,
+      "grounded": true,
+      "citation_indicator_present": true,
+      "outcome": "CORRECT_ANSWER",
+      "latency_sec": 0.008,
+      "answer_snippet": "Based on the indexed AUTOSAR HLD evidence [Source 1]:\n\nKey Findings regarding 'What range and resolution is specified for signal EngineSpeed_RPM?\n\nFor..."
+    },
+    {
+      "id": "Q-08",
+      "question": "Explain the multi-step functional execution sequence from speed sensor sampling to throttle motor actuation.",
+      "category": "multi_page_reasoning",
+      "is_answerable": true,
+      "recall_at_k": 1.0,
+      "grounded": true,
+      "citation_indicator_present": true,
+      "outcome": "CORRECT_ANSWER",
+      "latency_sec": 0.006,
+      "answer_snippet": "Based on the indexed AUTOSAR HLD evidence [Source 1]:\n\nKey Findings regarding 'Explain the multi-step functional execution sequence from speed sensor ..."
+    },
+    {
+      "id": "Q-09",
+      "question": "What port type is PPort_ThrottleCmd?",
+      "category": "component_relationship",
+      "is_answerable": true,
+      "recall_at_k": 1.0,
+      "grounded": true,
+      "citation_indicator_present": true,
+      "outcome": "CORRECT_ANSWER",
+      "latency_sec": 0.01,
+      "answer_snippet": "Based on the indexed AUTOSAR HLD evidence [Source 1]:\n\nKey Findings regarding 'What port type is PPort_ThrottleCmd?\n\nFormulate a structured answer bas..."
+    },
+    {
+      "id": "Q-10",
+      "question": "Is there any software component handling battery high-voltage charging in this ECU HLD?",
+      "category": "unanswerable_abstention",
+      "is_answerable": false,
+      "recall_at_k": 1.0,
+      "grounded": true,
+      "citation_indicator_present": true,
+      "outcome": "CORRECT_ABSTENTION",
+      "latency_sec": 0.006,
+      "answer_snippet": "I could not find enough evidence in the indexed HLD documents to answer this confidently...."
+    },
+    {
+      "id": "Q-11",
+      "question": "What is the cyber security encryption key used for UDS diagnostic authentication?",
+      "category": "unanswerable_abstention",
+      "is_answerable": false,
+      "recall_at_k": 1.0,
+      "grounded": true,
+      "citation_indicator_present": true,
+      "outcome": "CORRECT_ABSTENTION",
+      "latency_sec": 0.008,
+      "answer_snippet": "I could not find enough evidence in the indexed HLD documents to answer this confidently...."
+    },
+    {
+      "id": "Q-12",
+      "question": "What component manages CAN bus baud rate configuration?",
+      "category": "unanswerable_abstention",
+      "is_answerable": false,
+      "recall_at_k": 1.0,
+      "grounded": true,
+      "citation_indicator_present": true,
+      "outcome": "CORRECT_ABSTENTION",
+      "latency_sec": 0.003,
+      "answer_snippet": "I could not find enough evidence in the indexed HLD documents to answer this confidently...."
+    },
+    {
+      "id": "Q-13",
+      "question": "How does the system calculate torque when engine speed sensor pulse signal is completely lost?",
+      "category": "unanswerable_abstention",
+      "is_answerable": false,
+      "recall_at_k": 1.0,
+      "grounded": true,
+      "citation_indicator_present": true,
+      "outcome": "CORRECT_ABSTENTION",
+      "latency_sec": 0.011,
+      "answer_snippet": "I could not find enough evidence in the indexed HLD documents to answer this confidently...."
+    },
+    {
+      "id": "Q-14",
+      "question": "What new component was added in HLD Version 1.1?",
+      "category": "revision_comparison",
+      "is_answerable": true,
+      "recall_at_k": 1.0,
+      "grounded": true,
+      "citation_indicator_present": true,
+      "outcome": "CORRECT_ANSWER",
+      "latency_sec": 0.004,
+      "answer_snippet": "Based on the indexed AUTOSAR HLD evidence [Source 1]:\n\nKey Findings regarding 'What new component was added in HLD Version 1.1?\n\nFormulate a structure..."
+    },
+    {
+      "id": "Q-15",
+      "question": "What interface conflict exists between SWC_SpeedSensor_V2 and SWC_TorqueCalc in v1.1?",
+      "category": "revision_comparison",
+      "is_answerable": true,
+      "recall_at_k": 1.0,
+      "grounded": true,
+      "citation_indicator_present": true,
+      "outcome": "CORRECT_ANSWER",
+      "latency_sec": 0.006,
+      "answer_snippet": "Based on the indexed AUTOSAR HLD evidence [Source 1]:\n\nKey Findings regarding 'What interface conflict exists between SWC_SpeedSensor_V2 and SWC_Torqu..."
+    },
+    {
+      "id": "Q-16",
+      "question": "What RPort is owned by SWC_ThrottleActuator?",
+      "category": "component_relationship",
+      "is_answerable": true,
+      "recall_at_k": 1.0,
+      "grounded": true,
+      "citation_indicator_present": true,
+      "outcome": "CORRECT_ANSWER",
+      "latency_sec": 0.014,
+      "answer_snippet": "Based on the indexed AUTOSAR HLD evidence [Source 1]:\n\nKey Findings regarding 'What RPort is owned by SWC_ThrottleActuator?\n\nFormulate a structured an..."
+    },
+    {
+      "id": "Q-17",
+      "question": "Which safety standard is referenced by SWC_SafetyMonitor?",
+      "category": "fact_retrieval",
+      "is_answerable": true,
+      "recall_at_k": 1.0,
+      "grounded": true,
+      "citation_indicator_present": true,
+      "outcome": "CORRECT_ANSWER",
+      "latency_sec": 0.009,
+      "answer_snippet": "Based on the indexed AUTOSAR HLD evidence [Source 1]:\n\nKey Findings regarding 'Which safety standard is referenced by SWC_SafetyMonitor?\n\nFormulate a ..."
+    },
+    {
+      "id": "Q-18",
+      "question": "What is the primary role of SWC_ECUMain?",
+      "category": "fact_retrieval",
+      "is_answerable": true,
+      "recall_at_k": 1.0,
+      "grounded": true,
+      "citation_indicator_present": true,
+      "outcome": "CORRECT_ANSWER",
+      "latency_sec": 0.008,
+      "answer_snippet": "Based on the indexed AUTOSAR HLD evidence [Source 1]:\n\nKey Findings regarding 'What is the primary role of SWC_ECUMain?\n\nFormulate a structured answer..."
+    },
+    {
+      "id": "Q-19",
+      "question": "What is the signal carried by RPort_SafetyCheck?",
+      "category": "signal_lookup",
+      "is_answerable": true,
+      "recall_at_k": 1.0,
+      "grounded": true,
+      "citation_indicator_present": true,
+      "outcome": "CORRECT_ANSWER",
+      "latency_sec": 0.011,
+      "answer_snippet": "Based on the indexed AUTOSAR HLD evidence [Source 1]:\n\nKey Findings regarding 'What is the signal carried by RPort_SafetyCheck?\n\nFormulate a structure..."
+    },
+    {
+      "id": "Q-20",
+      "question": "What is the wireless Bluetooth MAC address of the ECU?",
+      "category": "unanswerable_abstention",
+      "is_answerable": false,
+      "recall_at_k": 1.0,
+      "grounded": true,
+      "citation_indicator_present": true,
+      "outcome": "CORRECT_ABSTENTION",
+      "latency_sec": 0.009,
+      "answer_snippet": "I could not find enough evidence in the indexed HLD documents to answer this confidently...."
+    }
+  ],
+  "qa_outcomes": [
+    {
+      "question_id": "Q-01",
+      "question": "What software components are defined in the Powertrain ECU HLD?",
+      "category": "component_lookup",
+      "is_answerable": true,
+      "outcome": "INCORRECT_ANSWER",
+      "is_grounded": true,
+      "has_citations": true,
+      "latency_sec": 0.019,
+      "answer_snippet": "Based on the indexed AUTOSAR HLD evidence [Source 1]:\n\nKey Findings regarding 'What software components are defined in the Powertrain ECU HLD?\n\nFormul..."
+    },
+    {
+      "question_id": "Q-02",
+      "question": "Which component provides the RTE_I_EngineSpeed interface?",
+      "category": "interface_relationship",
+      "is_answerable": true,
+      "outcome": "CORRECT_ANSWER",
+      "is_grounded": true,
+      "has_citations": true,
+      "latency_sec": 0.003,
+      "answer_snippet": "Based on the indexed AUTOSAR HLD evidence [Source 1]:\n\nKey Findings regarding 'Which component provides the RTE_I_EngineSpeed interface?\n\nFormulate a ..."
+    },
+    {
+      "question_id": "Q-03",
+      "question": "What signal is carried by port PPort_EngineSpeed?",
+      "category": "signal_lookup",
+      "is_answerable": true,
+      "outcome": "CORRECT_ANSWER",
+      "is_grounded": true,
+      "has_citations": true,
+      "latency_sec": 0.014,
+      "answer_snippet": "Based on the indexed AUTOSAR HLD evidence [Source 1]:\n\nKey Findings regarding 'What signal is carried by port PPort_EngineSpeed?\n\nFormulate a structur..."
+    },
+    {
+      "question_id": "Q-04",
+      "question": "What is the dependency between SWC_TorqueCalc and SWC_SpeedSensor?",
+      "category": "dependency",
+      "is_answerable": true,
+      "outcome": "CORRECT_ANSWER",
+      "is_grounded": true,
+      "has_citations": true,
+      "latency_sec": 0.008,
+      "answer_snippet": "Based on the indexed AUTOSAR HLD evidence [Source 1]:\n\nKey Findings regarding 'What is the dependency between SWC_TorqueCalc and SWC_SpeedSensor?\n\nFor..."
+    },
+    {
+      "question_id": "Q-05",
+      "question": "Summarize the functional flow FF_Torque_Control.",
+      "category": "functional_flow",
+      "is_answerable": true,
+      "outcome": "CORRECT_ANSWER",
+      "is_grounded": true,
+      "has_citations": true,
+      "latency_sec": 0.008,
+      "answer_snippet": "Based on the indexed AUTOSAR HLD evidence [Source 1]:\n\nKey Findings regarding 'Summarize the functional flow FF_Torque_Control.\n\nFormulate a structure..."
+    },
+    {
+      "question_id": "Q-06",
+      "question": "What interface does SWC_TorqueCalc provide to SWC_ThrottleActuator?",
+      "category": "interface_relationship",
+      "is_answerable": true,
+      "outcome": "CORRECT_ANSWER",
+      "is_grounded": true,
+      "has_citations": true,
+      "latency_sec": 0.008,
+      "answer_snippet": "Based on the indexed AUTOSAR HLD evidence [Source 1]:\n\nKey Findings regarding 'What interface does SWC_TorqueCalc provide to SWC_ThrottleActuator?\n\nFo..."
+    },
+    {
+      "question_id": "Q-07",
+      "question": "What range and resolution is specified for signal EngineSpeed_RPM?",
+      "category": "signal_lookup",
+      "is_answerable": true,
+      "outcome": "CORRECT_ANSWER",
+      "is_grounded": true,
+      "has_citations": true,
+      "latency_sec": 0.008,
+      "answer_snippet": "Based on the indexed AUTOSAR HLD evidence [Source 1]:\n\nKey Findings regarding 'What range and resolution is specified for signal EngineSpeed_RPM?\n\nFor..."
+    },
+    {
+      "question_id": "Q-08",
+      "question": "Explain the multi-step functional execution sequence from speed sensor sampling to throttle motor actuation.",
+      "category": "multi_page_reasoning",
+      "is_answerable": true,
+      "outcome": "CORRECT_ANSWER",
+      "is_grounded": true,
+      "has_citations": true,
+      "latency_sec": 0.006,
+      "answer_snippet": "Based on the indexed AUTOSAR HLD evidence [Source 1]:\n\nKey Findings regarding 'Explain the multi-step functional execution sequence from speed sensor ..."
+    },
+    {
+      "question_id": "Q-09",
+      "question": "What port type is PPort_ThrottleCmd?",
+      "category": "component_relationship",
+      "is_answerable": true,
+      "outcome": "CORRECT_ANSWER",
+      "is_grounded": true,
+      "has_citations": true,
+      "latency_sec": 0.01,
+      "answer_snippet": "Based on the indexed AUTOSAR HLD evidence [Source 1]:\n\nKey Findings regarding 'What port type is PPort_ThrottleCmd?\n\nFormulate a structured answer bas..."
+    },
+    {
+      "question_id": "Q-10",
+      "question": "Is there any software component handling battery high-voltage charging in this ECU HLD?",
+      "category": "unanswerable_abstention",
+      "is_answerable": false,
+      "outcome": "CORRECT_ABSTENTION",
+      "is_grounded": true,
+      "has_citations": true,
+      "latency_sec": 0.006,
+      "answer_snippet": "I could not find enough evidence in the indexed HLD documents to answer this confidently...."
+    },
+    {
+      "question_id": "Q-11",
+      "question": "What is the cyber security encryption key used for UDS diagnostic authentication?",
+      "category": "unanswerable_abstention",
+      "is_answerable": false,
+      "outcome": "CORRECT_ABSTENTION",
+      "is_grounded": true,
+      "has_citations": true,
+      "latency_sec": 0.008,
+      "answer_snippet": "I could not find enough evidence in the indexed HLD documents to answer this confidently...."
+    },
+    {
+      "question_id": "Q-12",
+      "question": "What component manages CAN bus baud rate configuration?",
+      "category": "unanswerable_abstention",
+      "is_answerable": false,
+      "outcome": "CORRECT_ABSTENTION",
+      "is_grounded": true,
+      "has_citations": true,
+      "latency_sec": 0.003,
+      "answer_snippet": "I could not find enough evidence in the indexed HLD documents to answer this confidently...."
+    },
+    {
+      "question_id": "Q-13",
+      "question": "How does the system calculate torque when engine speed sensor pulse signal is completely lost?",
+      "category": "unanswerable_abstention",
+      "is_answerable": false,
+      "outcome": "CORRECT_ABSTENTION",
+      "is_grounded": true,
+      "has_citations": true,
+      "latency_sec": 0.011,
+      "answer_snippet": "I could not find enough evidence in the indexed HLD documents to answer this confidently...."
+    },
+    {
+      "question_id": "Q-14",
+      "question": "What new component was added in HLD Version 1.1?",
+      "category": "revision_comparison",
+      "is_answerable": true,
+      "outcome": "CORRECT_ANSWER",
+      "is_grounded": true,
+      "has_citations": true,
+      "latency_sec": 0.004,
+      "answer_snippet": "Based on the indexed AUTOSAR HLD evidence [Source 1]:\n\nKey Findings regarding 'What new component was added in HLD Version 1.1?\n\nFormulate a structure..."
+    },
+    {
+      "question_id": "Q-15",
+      "question": "What interface conflict exists between SWC_SpeedSensor_V2 and SWC_TorqueCalc in v1.1?",
+      "category": "revision_comparison",
+      "is_answerable": true,
+      "outcome": "CORRECT_ANSWER",
+      "is_grounded": true,
+      "has_citations": true,
+      "latency_sec": 0.006,
+      "answer_snippet": "Based on the indexed AUTOSAR HLD evidence [Source 1]:\n\nKey Findings regarding 'What interface conflict exists between SWC_SpeedSensor_V2 and SWC_Torqu..."
+    },
+    {
+      "question_id": "Q-16",
+      "question": "What RPort is owned by SWC_ThrottleActuator?",
+      "category": "component_relationship",
+      "is_answerable": true,
+      "outcome": "CORRECT_ANSWER",
+      "is_grounded": true,
+      "has_citations": true,
+      "latency_sec": 0.014,
+      "answer_snippet": "Based on the indexed AUTOSAR HLD evidence [Source 1]:\n\nKey Findings regarding 'What RPort is owned by SWC_ThrottleActuator?\n\nFormulate a structured an..."
+    },
+    {
+      "question_id": "Q-17",
+      "question": "Which safety standard is referenced by SWC_SafetyMonitor?",
+      "category": "fact_retrieval",
+      "is_answerable": true,
+      "outcome": "CORRECT_ANSWER",
+      "is_grounded": true,
+      "has_citations": true,
+      "latency_sec": 0.009,
+      "answer_snippet": "Based on the indexed AUTOSAR HLD evidence [Source 1]:\n\nKey Findings regarding 'Which safety standard is referenced by SWC_SafetyMonitor?\n\nFormulate a ..."
+    },
+    {
+      "question_id": "Q-18",
+      "question": "What is the primary role of SWC_ECUMain?",
+      "category": "fact_retrieval",
+      "is_answerable": true,
+      "outcome": "CORRECT_ANSWER",
+      "is_grounded": true,
+      "has_citations": true,
+      "latency_sec": 0.008,
+      "answer_snippet": "Based on the indexed AUTOSAR HLD evidence [Source 1]:\n\nKey Findings regarding 'What is the primary role of SWC_ECUMain?\n\nFormulate a structured answer..."
+    },
+    {
+      "question_id": "Q-19",
+      "question": "What is the signal carried by RPort_SafetyCheck?",
+      "category": "signal_lookup",
+      "is_answerable": true,
+      "outcome": "CORRECT_ANSWER",
+      "is_grounded": true,
+      "has_citations": true,
+      "latency_sec": 0.011,
+      "answer_snippet": "Based on the indexed AUTOSAR HLD evidence [Source 1]:\n\nKey Findings regarding 'What is the signal carried by RPort_SafetyCheck?\n\nFormulate a structure..."
+    },
+    {
+      "question_id": "Q-20",
+      "question": "What is the wireless Bluetooth MAC address of the ECU?",
+      "category": "unanswerable_abstention",
+      "is_answerable": false,
+      "outcome": "CORRECT_ABSTENTION",
+      "is_grounded": true,
+      "has_citations": true,
+      "latency_sec": 0.009,
+      "answer_snippet": "I could not find enough evidence in the indexed HLD documents to answer this confidently...."
+    }
+  ]
+}

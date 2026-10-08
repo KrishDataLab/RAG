@@ -1,0 +1,10 @@
+app:
+  name: "AUTOSAR HLD Intelligence & Traceability Assistant (AHITA)"
+  version: "1.0.0"
+  description: "Evidence-grounded AI engineering assistant for AUTOSAR HLD analysis"
+  max_upload_size_mb: 50
+  supported_extensions: [".pdf"]
+
+project_defaults:
+  default_project_id: "P001"
+  default_project_name: "Powertrain ECU AUTOSAR Architecture"

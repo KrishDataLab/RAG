@@ -1,0 +1,37 @@
+Question ID,Question,Category,Is Answerable,Outcome,Is Grounded,Has Citations,Latency Sec,Answer Snippet
+H-01,Which software component coordinates ECU power states and system sleep/wake transitions?,component_lookup,True,CORRECT_ANSWER,True,True,0.002,"Based on the indexed AUTOSAR HLD evidence [Source 1]:
+
+Key Findings regarding 'Which software component coordinates ECU power states and system sleep/..."
+H-02,What interface is provided by SWC_SpeedSensor_V2 in HLD version 1.1?,interface_relationship,True,CORRECT_ANSWER,True,True,0.002,"Based on the indexed AUTOSAR HLD evidence [Source 1]:
+
+Key Findings regarding 'What interface is provided by SWC_SpeedSensor_V2 in HLD version 1.1?
+
+F..."
+H-03,Which component owns the provided port PPort_EngineSpeed?,port_ownership,True,CORRECT_ANSWER,True,True,0.001,"Based on the indexed AUTOSAR HLD evidence [Source 1]:
+
+Key Findings regarding 'Which component owns the provided port PPort_EngineSpeed?
+
+Formulate a ..."
+H-04,What is the signal name and engineering unit carried by port PPort_ThrottleCmd?,signal_attributes,True,CORRECT_ANSWER,True,True,0.001,"Based on the indexed AUTOSAR HLD evidence [Source 1]:
+
+Key Findings regarding 'What is the signal name and engineering unit carried by port PPort_Thro..."
+H-05,What sequence of components processes the signal path in functional flow FF_Torque_Control_v2?,functional_flow,True,INCORRECT_ANSWER,True,True,0.001,"Based on the indexed AUTOSAR HLD evidence [Source 1]:
+
+Key Findings regarding 'What sequence of components processes the signal path in functional flo..."
+H-06,What component depends on SWC_SafetyMonitor for torque safety limit checking?,dependency,True,CORRECT_ANSWER,True,True,0.001,"Based on the indexed AUTOSAR HLD evidence [Source 1]:
+
+Key Findings regarding 'What component depends on SWC_SafetyMonitor for torque safety limit che..."
+H-07,Trace the signal data from speed sensor pulse input to physical electric throttle motor actuation.,multi_step_reasoning,True,CORRECT_ANSWER,True,True,0.001,"Based on the indexed AUTOSAR HLD evidence [Source 1]:
+
+Key Findings regarding 'Trace the signal data from speed sensor pulse input to physical electri..."
+H-08,"According to the Section 3 Interface Table, which component requires interface RTE_I_SafetyTorque?",table_derived_facts,True,CORRECT_ANSWER,True,True,0.001,"Based on the indexed AUTOSAR HLD evidence [Source 1]:
+
+Key Findings regarding 'According to the Section 3 Interface Table, which component requires in..."
+H-09,Why was SWC_SafetyMonitor added in HLD version 1.1?,revision_reasoning,True,INCORRECT_ANSWER,True,True,0.001,"Based on the indexed AUTOSAR HLD evidence [Source 1]:
+
+Key Findings regarding 'Why was SWC_SafetyMonitor added in HLD version 1.1?
+
+Formulate a struct..."
+H-10,What is the maximum current draw in Amperes for the electric throttle actuator motor?,unanswerable_abstention,False,CORRECT_ABSTENTION,True,True,0.001,I could not find enough evidence in the indexed HLD documents to answer this confidently....
+H-11,Which LIN bus transceiver component is used for door control unit communication?,unanswerable_abstention,False,CORRECT_ABSTENTION,True,True,0.001,I could not find enough evidence in the indexed HLD documents to answer this confidently....
+H-12,What is the firmware flash memory address offset for the bootloader configuration sector?,unanswerable_abstention,False,CORRECT_ABSTENTION,True,True,0.001,I could not find enough evidence in the indexed HLD documents to answer this confidently....

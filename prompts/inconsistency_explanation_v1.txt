@@ -1,0 +1,8 @@
+A deterministic architectural inconsistency rule detected a potential discrepancy between revision versions or entity definitions.
+
+RULE TRIGGERED: {rule_name}
+SUMMARY: {finding_summary}
+VERSION A EVIDENCE: {evidence_a}
+VERSION B EVIDENCE: {evidence_b}
+
+Provide a concise engineering explanation of the potential risk and recommend verification steps for the AUTOSAR architect. Distinguish supplied evidence from inference.

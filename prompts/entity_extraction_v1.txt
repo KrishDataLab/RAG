@@ -1,0 +1,27 @@
+Analyze the following AUTOSAR High-Level Design (HLD) text span and extract architecture entities.
+
+Allowed Entity Types:
+- SoftwareComponent
+- Interface
+- Port
+- Signal
+- FunctionalFlow
+- Dependency
+
+TEXT CONTENT:
+Page {page_number}, Section: {section}
+{text}
+
+Return JSON with format:
+{{
+  "entities": [
+    {{
+      "type": "SoftwareComponent | Interface | Port | Signal | FunctionalFlow | Dependency",
+      "name": "Canonical Name",
+      "aliases": [],
+      "page_number": {page_number},
+      "section": "{section}",
+      "confidence": 0.95
+    }}
+  ]
+}}
