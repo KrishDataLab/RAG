@@ -105,76 +105,64 @@ class LLMClient:
     def _fallback_generate(self, prompt: str, system_instruction: Optional[str], json_mode: bool) -> str:
         logger.info("Executing grounded fallback engineering response generator.")
 
-        if json_mode or "JSON" in prompt or "entities" in prompt or "relationships" in prompt:
+        structured_extraction_prompt = prompt.lstrip().startswith((
+            "Analyze the following AUTOSAR High-Level Design",
+            "Analyze the AUTOSAR HLD text and map relationships",
+        ))
+        if json_mode or structured_extraction_prompt:
             return self._fallback_structured_json(prompt)
 
         context_match = re.search(r"CONTEXT EVIDENCE CHUNKS:\n(.*?)\n\nUSER QUESTION:\n(.*)", prompt, re.DOTALL)
         if context_match:
             context = context_match.group(1).strip()
-            question = context_match.group(2).strip()
-            q_lower = question.lower()
-
-            unanswerable_topics = [
-                "battery", "charging", "can bus", "baud rate", "uds", "authentication", "bluetooth",
-                "mac address", "pulse signal is completely lost", "current draw", "amperes", "lin bus",
-                "door control", "flash memory", "bootloader"
-            ]
-            if any(topic in q_lower for topic in unanswerable_topics):
-                return "I could not find enough evidence in the indexed HLD documents to answer this confidently."
-
-            if not context or "No evidence" in context or "No evidence available" in context:
-                return "I could not find enough evidence in the indexed HLD documents to answer this confidently."
-
-            # Specific question-answering rules for AUTOSAR technical queries
-            answer_bullets = []
-
-            # 1. Port carrying signal query
-            if "pport_enginespeed" in q_lower:
-                answer_bullets.append("Port PPort_EngineSpeed carries signal EngineSpeed_RPM (SenderReceiverInterface_RPM).")
-            elif "rport_safetycheck" in q_lower:
-                answer_bullets.append("Port RPort_SafetyCheck carries signal SafetyOverride_Flag (Interface RTE_I_SafetyTorque).")
-            elif "rport_throttlecmd" in q_lower and "owned" in q_lower:
-                answer_bullets.append("SWC_ThrottleActuator owns required port RPort_ThrottleCmd, which receives interface RTE_I_ThrottlePosition_V2.")
-            elif "pport_throttlecmd" in q_lower and "port type" in q_lower:
-                answer_bullets.append("Port PPort_ThrottleCmd is a Provided Port (PPort) owned by SWC_TorqueCalc.")
-
-            # 2. Interface relationship query
-            if "swc_torquecalc" in q_lower and "swc_throttleactuator" in q_lower:
-                answer_bullets.append("SWC_TorqueCalc provides interface RTE_I_ThrottlePosition (v1.0) / RTE_I_ThrottlePosition_V2 (v1.1) to SWC_ThrottleActuator via PPort_ThrottleCmd.")
-            elif "swc_safetymonitor" in q_lower and "safety standard" in q_lower:
-                answer_bullets.append("SWC_SafetyMonitor is designed in accordance with safety standard ISO 26262 ASIL-D for torque safety monitoring.")
-            elif "enginespeed_rpm" in q_lower and ("range" in q_lower or "resolution" in q_lower):
-                answer_bullets.append("Signal EngineSpeed_RPM specification: Range: 0 to 8000 RPM, Resolution: 1 RPM.")
-            elif "new component" in q_lower and "v1.1" in q_lower:
-                answer_bullets.append("SWC_SafetyMonitor (NEW Component) was added in HLD Version 1.1 to monitor torque safety limits according to ISO 26262 ASIL-D.")
-            elif "conflict" in q_lower and "v1.1" in q_lower:
-                answer_bullets.append("Interface conflict in v1.1: SWC_SpeedSensor_V2 provides RTE_I_EngineSpeed_HighRes, but SWC_TorqueCalc still requires legacy interface RTE_I_EngineSpeed.")
-
-            lines = context.split("\n")
-            sources = []
-            facts = []
-
-            for line in lines:
-                if line.startswith("[Source"):
-                    sources.append(line.split("]")[0] + "]")
-                elif len(line.strip()) > 15 and not line.startswith("---") and not line.startswith("CONTEXT"):
-                    facts.append(line.strip())
-
-            source_str = sources[0] if sources else "[Source 1]"
-
-            if answer_bullets:
-                summary_facts = "\n- ".join(answer_bullets)
-            else:
-                summary_facts = "\n- ".join(facts[:4]) if facts else "Relevant AUTOSAR architecture specifications were retrieved."
-
-            answer = (
-                f"Based on the indexed AUTOSAR HLD evidence {source_str}:\n\n"
-                f"Key Findings regarding '{question}':\n- {summary_facts}\n\n"
-                f"Reference details are confirmed in the cited document sections below."
+            question = context_match.group(2).split("\n\n", 1)[0].strip()
+            evidence_blocks = re.findall(
+                r"\[Source\s+(\d+)\](.*?)(?=\n\s*\[Source\s+\d+\]|\Z)",
+                context,
+                re.DOTALL,
             )
-            return answer
+            query_terms = set(re.findall(r"[a-z0-9_]+", question.lower()))
+            stop_words = {
+                "a", "an", "and", "are", "be", "does", "for", "from", "how", "in",
+                "is", "it", "of", "on", "or", "the", "this", "to", "what", "when",
+                "where", "which", "who", "why", "with",
+            }
+            informative_terms = query_terms - stop_words
+            identifiers = {
+                term for term in query_terms
+                if "_" in term or any(character.isdigit() for character in term)
+            }
 
-        return "AUTOSAR architecture analysis performed successfully based on available document evidence."
+            evidence_sentences = []
+            for source_id, block in evidence_blocks:
+                _, _, source_text = block.partition("\n")
+                for sentence in re.split(r"(?<=[.!?])\s+|\n+", source_text):
+                    sentence = sentence.strip(" \t-*")
+                    if not sentence:
+                        continue
+                    sentence_terms = set(re.findall(r"[a-z0-9_]+", sentence.lower()))
+                    matched_terms = informative_terms & sentence_terms
+                    if identifiers and not identifiers.issubset(sentence_terms):
+                        continue
+                    if len(matched_terms) < 2 and not (
+                        identifiers and identifiers.issubset(sentence_terms)
+                    ):
+                        continue
+                    if informative_terms and len(matched_terms) / len(informative_terms) < 0.4:
+                        continue
+                    evidence_sentences.append((sentence, source_id))
+
+            if evidence_sentences:
+                # Return source text verbatim; do not synthesize facts in the local fallback.
+                unique_sentences = {}
+                for sentence, source_id in evidence_sentences:
+                    unique_sentences.setdefault(sentence.casefold(), (sentence, source_id))
+                return "\n".join(
+                    f'- "{sentence}" [Source {source_id}]'
+                    for sentence, source_id in list(unique_sentences.values())[:4]
+                )
+
+        return "I could not find enough evidence in the indexed HLD documents to answer this confidently."
 
     def _fallback_structured_json(self, prompt: str) -> str:
         text_content = prompt
@@ -229,22 +217,6 @@ class LLMClient:
                     "target_name": iface, "target_type": "Interface",
                     "relationship_type": rtype, "confidence": 0.95
                 })
-
-            # If no regex match found in prompt chunk, construct default component-interface relationships from components
-            if not rels and components and interfaces:
-                comp_list = list(components)
-                iface_list = list(interfaces)
-                rels.append({
-                    "source_name": comp_list[0], "source_type": "SoftwareComponent",
-                    "target_name": iface_list[0], "target_type": "Interface",
-                    "relationship_type": "provides", "confidence": 0.90
-                })
-                if len(comp_list) > 1:
-                    rels.append({
-                        "source_name": comp_list[1], "source_type": "SoftwareComponent",
-                        "target_name": iface_list[0], "target_type": "Interface",
-                        "relationship_type": "requires", "confidence": 0.90
-                    })
 
             # Deduplicate
             dedup_rels = {}

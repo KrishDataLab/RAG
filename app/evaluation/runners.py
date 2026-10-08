@@ -53,9 +53,9 @@ class EvaluationRunner:
             # 3. Format citations & prompt
             citations = CitationValidator.format_citations(chunks)
             context_str = ""
-            for c in chunks:
+            for index, c in enumerate(chunks, start=1):
                 meta = c["metadata"]
-                context_str += f"[Source 1] Page: {meta.get('page_number')}, Section: {meta.get('section')}\n{c['text']}\n\n"
+                context_str += f"[Source {index}] Page: {meta.get('page_number')}, Section: {meta.get('section')}\n{c['text']}\n\n"
 
             system_prompt = prompt_manager.get_prompt("rag_system_v1.txt")
             rag_prompt = prompt_manager.render("rag_answer_v1.txt", context=context_str or "No evidence available.", question=q_text)

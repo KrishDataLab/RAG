@@ -1,5 +1,6 @@
 import os
 import shutil
+import uuid
 from pathlib import Path
 from fastapi import APIRouter, UploadFile, File, Form, Depends, HTTPException
 from typing import Optional, List
@@ -26,7 +27,8 @@ def upload_document(
 
     os.makedirs(settings.UPLOAD_DIR, exist_ok=True)
     abs_upload_dir = Path(settings.UPLOAD_DIR).resolve()
-    save_path = (abs_upload_dir / safe_filename).resolve()
+    stored_filename = f"{uuid.uuid4().hex}_{safe_filename}"
+    save_path = (abs_upload_dir / stored_filename).resolve()
 
     if save_path.parent != abs_upload_dir:
         raise HTTPException(status_code=400, detail="Invalid filename or path traversal detected.")

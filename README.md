@@ -5,9 +5,9 @@ AUTOSAR HLD Intelligence & Traceability Assistant (AHITA) indexes HLD PDF text, 
 ## Release Architecture
 
 - **Retrieval:** Pure-Python BM25 over an in-memory index. Document chunks and metadata persist in SQLite and hydrate the index on search. No vector database or embedding model is used.
-- **Generation:** Gemini or OpenAI when configured; otherwise a local deterministic response fallback. The fallback is not equivalent to an LLM and should be checked against the source passages.
+- **Generation:** Gemini or OpenAI when configured; otherwise a conservative local fallback that quotes relevant retrieved text and abstains when it cannot match the question to evidence. It is not equivalent to an LLM.
 - **PDF handling:** Text extraction is page-aware. Low-text pages are detected but this release does not perform OCR.
-- **Citations:** Responses include retrieved document/page/section references. The validator does not verify each claim against its cited passage.
+- **Citations:** Responses include retrieved document/page/section references. The validator checks source references and lexical overlap with cited passages, but does not guarantee semantic entailment.
 - **Architecture workflows:** Entity/relationship extraction, revision alignment, deterministic inconsistency rules, human review, and audit records.
 
 ## Setup (Windows PowerShell)

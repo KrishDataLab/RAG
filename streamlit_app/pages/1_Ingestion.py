@@ -1,6 +1,7 @@
 import streamlit as st
 import os
 import sys
+import uuid
 from pathlib import Path
 
 sys.path.append(str(Path(__file__).resolve().parent.parent.parent))
@@ -31,7 +32,8 @@ with col1:
     if uploaded_file and st.button("Process & Index Document", type="primary"):
         os.makedirs(settings.UPLOAD_DIR, exist_ok=True)
         safe_filename = os.path.basename(uploaded_file.name.replace("\\", "/"))
-        file_path = os.path.join(settings.UPLOAD_DIR, safe_filename)
+        stored_filename = f"{uuid.uuid4().hex}_{safe_filename}"
+        file_path = os.path.join(settings.UPLOAD_DIR, stored_filename)
         with open(file_path, "wb") as f:
             f.write(uploaded_file.getbuffer())
 
